@@ -6,15 +6,20 @@
     <title>Document</title>
     <link rel="stylesheet" href="Diseño.css">
 </head>
-<header style="text-align: center;" id="Cabecera1">
+<header id="Cabecera1">
+    <body align="center">
     <?php
         echo "<h1>RoalcaDesign</h1>";
         echo "<p>Luxury matters.</p>";
-    ?>
+    ?>  
+    </body>
+    <body align="right">
+    <ul>
+      <li><a href="productos.php">Productos</a></li>
+      <li><a href="contacto.php">Contacto</a></li>
+    </ul>
+    </body>
 </header>
-<body>
-    <h2 style="text-align: center;">Bienvenido a RoalcaDesign</h2>
-    <p style="text-align: center;">Aquí encontrarás los mejores diseños de lujo.</p>
-    <p style="text-align: center;">Explora nuestra colección y descubre la elegancia en cada detalle.</p>
-</body>
+    <body align="center"> 
+    </body>
 </html>
