@@ -1,1 +1,38 @@
-#Cabecera1 {background-color: gold;}
+/* Establece una imagen de fondo para toda la página */
+body {
+    background-image: url('imágenes/marmolFondo.jpg'); 
+    background-size: fill;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+#Cabecera1 {
+    background-image: url('imágenes/marmolDos.jpg'); 
+    background-size: fill;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    text-align: center;
+    color: rgb(243, 199, 133);
+    font-family: 'Playfair Display', serif;
+}
+.contenedor-principal {
+    display: flex;
+    justify-content: flex-start; /* O flex-end para alinearlo a la derecha */
+    align-items: flex-start;
+    margin: 40px;
+    gap: 40px;
+}
+#Acerca-de {
+    background-color: rgb(255, 172, 71);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 16px;
+    padding: 32px 24px;
+    width: 400px;
+    color: rgb(255, 255, 255);
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}

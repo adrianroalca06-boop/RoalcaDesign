@@ -6,20 +6,36 @@
     <title>Document</title>
     <link rel="stylesheet" href="Diseño.css">
 </head>
+<body>
 <header id="Cabecera1">
-    <body align="center">
+   
     <?php
         echo "<h1>RoalcaDesign</h1>";
-        echo "<p>Luxury matters.</p>";
+        echo "<p><strong><em>Diseñado</em></strong></p> a tu medida.";
     ?>  
-    </body>
-    <body align="right">
-    <ul>
-      <li><a href="productos.php">Productos</a></li>
-      <li><a href="contacto.php">Contacto</a></li>
-    </ul>
-    </body>
 </header>
-    <body align="center"> 
+<div class="contenedor-principal">
+    <section id="Acerca-de">
+        <h2>Acerca de RoalcaDesign</h2>
+        <p>
+            RoalcaDesign es una empresa dedicada a la decoración de interiores a pequeña escala como habitaciones, salones, etc, sin perder la elegancia y el lujo.
+        </p>
+        <div class="slider">
+            <img id="slider-img" src="imágenes/habitacion1.jpeg" alt="Galería RoalcaDesign" width="300" height="200">
+        </div>
+    </section>
+</div>
+<script>
+    const imagenes = [
+        'imágenes/habitacion2.jpeg',
+        'imágenes/habitacion3.jpeg',
+        'imágenes/habitacion4.jpeg'
+    ];
+    let indice = 0;
+    setInterval(() => {
+        indice = (indice + 1) % imagenes.length;
+        document.getElementById('slider-img').src = imagenes[indice];
+    }, 6000);
+</script>
     </body>
 </html>
