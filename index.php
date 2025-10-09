@@ -9,10 +9,23 @@
 </head>
 <body>
 <header id="Cabecera1">
-   
+    <form method="get" action="soapClient.php" style="margin-bottom:20px;">
+    <input type="text" name="busqueda" placeholder="Buscar producto..." style="padding:8px; border-radius:6px; border:1px solid #ccc;">
+    <button type="submit" style="padding:8px 16px; border-radius:6px; background:#bfa16a; color:#fff; border:none;">Buscar</button>
+</form>
+    <nav>
+        <ul style="list-style:none; display:flex; justify-content:center; gap:30px; padding:0;">
+            <li>
+                <a href="mailto:adrianroalca06@gmail.com?subject=Consulta%20RoalcaDesign">Contacto</a>
+            </li>
+            <li>
+                <a href="ejemplos.php">Ejemplos</a>
+            </li>
+        </ul>
+    </nav>
     <?php
         echo "<h1>RoalcaDesign</h1>";
-        echo "<p><strong><em>Diseñado</em></strong></p> a tu medida.";
+        echo "<p>Luxury matters.</p>";
     ?>  
 </header>
 <div class="contenedor-principal">

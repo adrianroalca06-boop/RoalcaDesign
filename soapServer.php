@@ -1,16 +1,24 @@
 <?php
 class ProductoService {
+    private $conn;
+
+    public function __construct() {
+        $this->conn = new mysqli("localhost", "root", "", "roalca");
+        if ($this->conn->connect_error) {
+            die("Conexión fallida: " . $this->conn->connect_error);
+        }
+    }
+
     public function consultarProductos($busqueda = "") {
-        $productos = [
-            ['id' => 1, 'nombre' => 'Sofá Elegante', 'categoria' => 'Sala', 'precio' => 1200],
-            ['id' => 2, 'nombre' => 'Mesa de Mármol', 'categoria' => 'Comedor', 'precio' => 800],
-            ['id' => 3, 'nombre' => 'Lámpara Vintage', 'categoria' => 'Decoración', 'precio' => 150]
-        ];
+        $sql = "SELECT id, nombre, categoria, precio FROM productos";
         if ($busqueda) {
-            // Filtra productos por nombre
-            return array_filter($productos, function($p) use ($busqueda) {
-                return stripos($p['nombre'], $busqueda) !== false;
-            });
+            $busqueda = $this->conn->real_escape_string($busqueda);
+            $sql .= " WHERE nombre LIKE '%$busqueda%'";
+        }
+        $result = $this->conn->query($sql);
+        $productos = [];
+        while ($row = $result->fetch_assoc()) {
+            $productos[] = $row;
         }
         return $productos;
     }
