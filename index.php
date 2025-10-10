@@ -21,6 +21,8 @@
             <li>
                 <a href="ejemplos.php">Ejemplos</a>
             </li>
+            <li>
+                <a href="queEs.php">que es Roalca</a>
         </ul>
     </nav>
     <?php
@@ -36,9 +38,22 @@
         </p>
         <div class="slider">
             <img id="slider-img" src="imágenes/habitacion1.jpeg" alt="Galería RoalcaDesign" width="300" height="200">
-        </div>
+         </div>
+    </section>
+    <div class="contenedor-principal">
+    <section class="zona-texto">
+        <h3>¿Sabías que?</h3>
+        <p>
+            Nuestro equipo te asesora para que cada rincón de tu hogar refleje tu personalidad y estilo. Además, trabajamos con materiales de alta calidad para garantizar que cada proyecto no solo sea hermoso, sino también duradero. Encarga ahora tu proyecto de decoración y transforma tu espacio en un lugar lleno de lujo y confort.
+        </p>
     </section>
 </div>
+</div>
+        </div>         
+     
+    </section>
+</div>
+
 <script>
     const imagenes = [
         'imágenes/habitacion2.jpeg',
