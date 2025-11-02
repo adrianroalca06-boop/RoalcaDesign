@@ -9,36 +9,54 @@ $imagenes = [
 ];
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Ejemplos - RoalcaDesign</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - RoalcaDesign</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="Diseño.css">
+    <link rel="icon" type="image/png" href="imágenes/logoRoalca.png">
 </head>
 <body>
     <header id="Cabecera1">
-        <nav>
-            <ul style="list-style:none; display:flex; justify-content:center; gap:30px; padding:0;">
-                <li>
-                    <a href="mailto:adrianroalca06@gmail.com?subject=Consulta%20RoalcaDesign">Contacto</a>
-                </li>
-                <li>
-                    <a href="index.php">Inicio</a>
-                </li>
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li><a href="index.php">Inicio</a></li>
+                <li><a href="soapClient.php">Catálogo</a></li>
+                <li><a href="queEs.php">Nosotros</a></li>
+                <li><a href="mailto:adrianroalca06@gmail.com">Contacto</a></li>
             </ul>
         </nav>
-        <h1>RoalcaDesign</h1>
-        <p><strong><em>Luxury matters.</em></strong></p>
+        <h1>Nuestros Proyectos</h1>
+        <p class="subtitle">Diseños que Inspiran</p>
     </header>
-    <div class="contenedor-principal">
-        <section id="Acerca-de">
-            <h2>Ejemplos de Proyectos</h2>
-            <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
+    
+    <main class="contenedor-principal">
+        <section class="seccion">
+            <h2 class="text-center">Portfolio de Proyectos</h2>
+            <div class="galeria">
                 <?php foreach ($imagenes as $img): ?>
-                    <img src="<?php echo $img; ?>" alt="Ejemplo" style="width:200px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.10);">
+                <div class="galeria-item">
+                    <img src="<?php echo $img; ?>" alt="Proyecto RoalcaDesign" 
+                         loading="lazy">
+                    <div class="galeria-info">
+                        <h3>Diseño Exclusivo</h3>
+                        <p>Proyecto personalizado de diseño interior</p>
+                    </div>
+                </div>
                 <?php endforeach; ?>
             </div>
         </section>
-    </div>
+
+        <section class="seccion contacto">
+            <h2 class="text-center">¿Te inspira algún proyecto?</h2>
+            <p class="text-center">Contáctanos para crear tu espacio ideal</p>
+            <div class="text-center">
+                <a href="mailto:adrianroalca06@gmail.com?subject=Consulta%20sobre%20proyectos" 
+                   class="btn">Contactar Ahora</a>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
