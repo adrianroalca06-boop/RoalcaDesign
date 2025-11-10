@@ -1,27 +1,9 @@
 <?php
 require_once 'includes/config.php';
+require_once 'includes/productos.php';
 
-try {
-    $busqueda = filter_input(INPUT_GET, 'busqueda', FILTER_SANITIZE_STRING) ?? "";
-    
-    $options = [
-        'location' => 'http://localhost/roalcaDecor/soapServer.php',
-        'uri' => 'http://localhost/soap_server',
-        'encoding' => 'UTF-8',
-        'trace' => true
-    ];
-    
-    $client = new SoapClient(null, $options);
-    $productos = $client->consultarProductos($busqueda);
-} catch (SoapFault $e) {
-    error_log($e->getMessage());
-    $error = "Lo sentimos, ha ocurrido un error al buscar productos.";
-    $productos = [];
-} catch (Exception $e) {
-    error_log($e->getMessage());
-    $error = "Error inesperado. Por favor, intente más tarde.";
-    $productos = [];
-}
+$busqueda = filter_input(INPUT_GET, 'busqueda', FILTER_SANITIZE_STRING) ?? "";
+$productos = buscarProductos($busqueda);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -61,12 +43,17 @@ try {
         </div>
     </header>
     <div class="contenedor-principal">
-        <?php if (!empty($error)): ?>
-            <div class="error-mensaje">
-                <?php echo htmlspecialchars($error); ?>
+        <div class="filtros">
+            <div class="categorias">
+                <?php foreach (obtenerCategorias() as $categoria): ?>
+                    <a href="?busqueda=<?php echo urlencode($categoria); ?>" 
+                       class="categoria-tag <?php echo strtolower($busqueda) === strtolower($categoria) ? 'active' : ''; ?>">
+                        <?php echo htmlspecialchars($categoria); ?>
+                    </a>
+                <?php endforeach; ?>
             </div>
-        <?php endif; ?>
-        
+        </div>
+
         <section class="productos-grid">
             <?php if (empty($productos)): ?>
                 <div class="no-resultados">
@@ -77,13 +64,14 @@ try {
                     <article class="producto-card">
                         <div class="producto-imagen">
                             <img src="<?php echo htmlspecialchars($producto['imagen']); ?>" 
-                                 alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
+                                 alt="<?php echo htmlspecialchars($producto['nombre']); ?>"
+                                 onerror="this.src='imágenes/producto-default.jpg'">
                         </div>
                         <div class="producto-info">
                             <h3><?php echo htmlspecialchars($producto['nombre']); ?></h3>
                             <p class="producto-categoria"><?php echo htmlspecialchars($producto['categoria']); ?></p>
                             <p class="producto-descripcion"><?php echo htmlspecialchars($producto['descripcion']); ?></p>
-                            <p class="producto-precio">€<?php echo number_format($producto['precio'], 2); ?></p>
+                            <p class="producto-precio">€<?php echo number_format($producto['precio'], 2, ',', '.'); ?></p>
                             <a href="detalleProducto.php?id=<?php echo $producto['id']; ?>" 
                                class="btn btn-primary">Ver Detalles</a>
                         </div>
@@ -91,13 +79,6 @@ try {
                 <?php endforeach; ?>
             <?php endif; ?>
         </section>
-            <form method="get">
-                <input type="text" name="busqueda" placeholder="Buscar producto..." value="<?php echo htmlspecialchars($busqueda); ?>">
-                <button type="submit">Buscar</button>
-            </form>
-
-            <h2>Lista de Productos</h2>
-           <ul>
             <?php
  foreach ($productos as $producto): ?>
     <li>

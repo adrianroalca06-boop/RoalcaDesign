@@ -300,6 +300,39 @@ p {
     font-size: 1.2rem;
 }
 
+.filtros {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.categorias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.categoria-tag {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: white;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.categoria-tag:hover,
+.categoria-tag.active {
+    background: var(--color-primary);
+    color: white;
+}
+
 .productos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -309,10 +342,12 @@ p {
 
 .producto-card {
     background: white;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .producto-card:hover {
@@ -382,6 +417,286 @@ p {
     font-size: 1.2rem;
     color: var(--color-text);
     grid-column: 1 / -1;
+}
+
+/* Estilos para la página de detalle de producto */
+.detalle-producto {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    background: white;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.producto-imagen-grande {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.producto-imagen-grande img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.producto-info-detallada {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.producto-info-detallada h1 {
+    font-size: 2.5rem;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+}
+
+.producto-info-detallada .categoria {
+    color: var(--color-accent);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.producto-info-detallada .precio {
+    font-size: 2rem;
+    color: var(--color-primary);
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+.producto-info-detallada .descripcion {
+    margin: 2rem 0;
+}
+
+.producto-info-detallada .descripcion h2 {
+    font-size: 1.5rem;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+}
+
+.producto-info-detallada .descripcion p {
+    line-height: 1.8;
+    color: var(--color-text);
+}
+
+.caracteristicas {
+    margin: 2rem 0;
+}
+
+.caracteristicas h2 {
+    font-size: 1.5rem;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+}
+
+.caracteristicas ul {
+    list-style: none;
+    padding: 0;
+}
+
+.caracteristicas li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: var(--color-text);
+}
+
+.caracteristicas li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+}
+
+.acciones {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.productos-relacionados {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-secondary);
+}
+
+.productos-relacionados h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: var(--color-text);
+}
+
+.productos-relacionados .productos-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 768px) {
+    .productos-relacionados .productos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+/* Estilos responsivos */
+@media (max-width: 1200px) {
+    .contenedor-principal {
+        padding: 2rem 1.5rem;
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .grid-2-columns {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(2rem, 6vw, 3.5rem);
+    }
+
+    .productos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    /* Navegación móvil */
+    .navbar {
+        padding: 0.5rem 0;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 0.5rem;
+    }
+
+    .nav-list a {
+        width: 100%;
+        text-align: center;
+        padding: 0.8rem;
+    }
+
+    /* Header y contenido */
+    #Cabecera1 {
+        min-height: 70vh;
+    }
+
+    .hero-content {
+        padding: 6rem 1rem 2rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Secciones */
+    .seccion {
+        padding: 2rem 1rem;
+    }
+
+    /* Productos */
+    .detalle-producto {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+        gap: 2rem;
+    }
+
+    .producto-imagen-grande {
+        height: 300px;
+    }
+
+    .producto-info-detallada h1 {
+        font-size: 2rem;
+    }
+
+    .acciones {
+        flex-direction: column;
+    }
+
+    /* Formularios */
+    .contacto-form {
+        padding: 1.5rem;
+    }
+
+    .form-grupo {
+        margin-bottom: 1rem;
+    }
+
+    /* Búsqueda y filtros */
+    .search-container {
+        padding: 0 1rem;
+    }
+
+    .categorias {
+        padding: 0.5rem;
+    }
+
+    .categoria-tag {
+        font-size: 0.8rem;
+        padding: 0.4rem 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    /* Ajustes adicionales para móviles pequeños */
+    .hero-content h1 {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .producto-card {
+        margin: 0 1rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-links ul {
+        justify-content: center;
+    }
+
+    /* Ajuste para imágenes y galerías */
+    .galeria-item {
+        height: 200px;
+    }
+
+    .servicio-icono {
+        height: 150px;
+    }
+
+    /* Espaciado y márgenes */
+    .seccion {
+        margin-bottom: 2rem;
+    }
+
+    .contenedor-principal {
+        padding: 1rem;
+    }
+}
+    }
 }
 
 /* Grid y layouts */
